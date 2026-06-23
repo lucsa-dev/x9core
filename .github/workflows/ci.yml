@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Copiar .env
+        run: cp .env.example .env
+
+      - name: Build e testes via Docker
+        run: docker compose --profile test run --rm test
+
+      - name: Lint via Docker
+        run: |
+          docker compose build test
+          docker compose run --rm test ruff check src tests
+          docker compose run --rm test mypy src
