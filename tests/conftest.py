@@ -1,8 +1,17 @@
 import pytest
 from httpx import ASGITransport, AsyncClient
+from pathlib import Path
 
 from x9core.api.main import create_app
 from x9core.infrastructure.config import Settings
+
+FIXTURES_DIR = Path(__file__).parent / "fixtures"
+
+
+@pytest.fixture
+def sample_serp_html() -> str:
+    """HTML gravado de uma SERP do Google para testes offline."""
+    return (FIXTURES_DIR / "google" / "sample_serp.html").read_text(encoding="utf-8")
 
 
 @pytest.fixture

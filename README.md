@@ -1,13 +1,18 @@
 # x9core
 
-API de monitoramento e scraping com Google Dorks.
+API de monitoramento e scraping com Google Dorks — **scraping direto**, sem APIs externas pagas.
 
 ## Stack
 
 - Python 3.12 + FastAPI
 - Arquitetura Hexagonal (Ports & Adapters)
+- Playwright + BeautifulSoup (scraping)
 - PostgreSQL + Redis
 - Docker Compose
+
+## Roadmap
+
+Ver [ROADMAP.md](ROADMAP.md) para o pipeline completo.
 
 ## Início rápido
 
@@ -54,15 +59,20 @@ make test
 ```text
 src/x9core/
 ├── domain/
-│   ├── ports/          # Interfaces (Clock)
-│   ├── services/       # DorkBuilder
+│   ├── entities/       # SearchHit
+│   ├── ports/          # Clock
+│   ├── services/       # DorkBuilder, dedup, url normalizer
 │   └── value_objects/  # TimeWindow, Dork
-├── application/    # Use cases e ports
-├── infrastructure/ # Adapters (SERP, DB, fila)
-└── api/            # FastAPI (camada fina)
+├── application/
+│   ├── ports/          # SearchProvider
+│   └── use_cases/      # SearchByDork
+├── infrastructure/
+│   └── scraping/       # parser HTML, fakes (Playwright no Step 4)
+└── api/                # FastAPI
 ```
 
 ## Padrões de código
 
 - **Docstrings obrigatórias** em classes, funções e métodos em `src/` (validado pelo Ruff)
 - Regra detalhada em `.cursor/rules/docstrings.mdc`
+- Testes offline com HTML fixtures em `tests/fixtures/`

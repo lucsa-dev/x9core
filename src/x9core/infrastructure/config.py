@@ -19,7 +19,9 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+asyncpg://x9core:x9core@postgres:5432/x9core"
     redis_url: str = "redis://redis:6379/0"
 
-    serp_api_key: str = ""
+    scraper_headless: bool = True
+    scraper_proxy_url: str = ""
+    scraper_request_delay_seconds: float = 2.0
 
     @property
     def is_development(self) -> bool:
