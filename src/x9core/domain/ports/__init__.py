@@ -1,0 +1,1 @@
+"""Ports (interfaces) do domínio."""

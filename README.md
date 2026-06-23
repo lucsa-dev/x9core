@@ -53,8 +53,16 @@ make test
 
 ```text
 src/x9core/
-├── domain/         # Entidades e value objects (sem I/O)
+├── domain/
+│   ├── ports/          # Interfaces (Clock)
+│   ├── services/       # DorkBuilder
+│   └── value_objects/  # TimeWindow, Dork
 ├── application/    # Use cases e ports
 ├── infrastructure/ # Adapters (SERP, DB, fila)
 └── api/            # FastAPI (camada fina)
 ```
+
+## Padrões de código
+
+- **Docstrings obrigatórias** em classes, funções e métodos em `src/` (validado pelo Ruff)
+- Regra detalhada em `.cursor/rules/docstrings.mdc`

@@ -1,1 +1,1 @@
-# Infrastructure adapters — SERP, enrichers, persistence, queue.
+"""Adapters de infraestrutura — banco, fila, APIs externas."""

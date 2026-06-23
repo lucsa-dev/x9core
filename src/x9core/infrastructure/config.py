@@ -1,7 +1,11 @@
+"""Configuração da aplicação via variáveis de ambiente."""
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    """Configurações carregadas de variáveis de ambiente e arquivo ``.env``."""
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
@@ -19,8 +23,10 @@ class Settings(BaseSettings):
 
     @property
     def is_development(self) -> bool:
+        """Indica se a aplicação está rodando em ambiente de desenvolvimento."""
         return self.app_env == "development"
 
 
 def get_settings() -> Settings:
+    """Retorna as configurações da aplicação."""
     return Settings()

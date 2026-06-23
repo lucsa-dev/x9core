@@ -1,0 +1,36 @@
+---
+description: Docstrings obrigatórias em todo código de produção
+globs: src/**/*.py
+alwaysApply: false
+---
+
+# Padrão de docstrings
+
+Toda **classe**, **função** e **método** em `src/` deve ter docstring.
+
+## Regras
+
+1. **Idioma:** português, frases completas.
+2. **Módulos:** todo arquivo `.py` começa com docstring de módulo.
+3. **Classes:** descrevem a responsabilidade do tipo.
+4. **Funções públicas:** descrevem o que fazem; use `Args`, `Returns` e `Raises` quando houver parâmetros relevantes ou exceções.
+5. **Funções privadas (`_`):** docstring curta de uma linha é suficiente.
+6. **Métodos especiais (`__str__`, `__eq__`, etc.):** docstring breve explicando o comportamento.
+
+## Exemplo
+
+```python
+def with_terms(self, *terms: str) -> DorkBuilder:
+    """Adiciona termos de busca entre aspas, combinados com OR se houver mais de um.
+
+    Args:
+        *terms: Nomes, apelidos ou palavras-chave da busca.
+
+    Raises:
+        ValueError: Se algum termo estiver vazio.
+    """
+```
+
+## Validação
+
+O Ruff (`rule D`) valida docstrings em `src/`. Rode `make lint` antes de commitar.

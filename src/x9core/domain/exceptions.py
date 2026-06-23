@@ -1,3 +1,6 @@
+"""Exceções de regra de negócio do domínio."""
+
+
 class DomainError(Exception):
     """Erro de regra de negócio do domínio."""
 

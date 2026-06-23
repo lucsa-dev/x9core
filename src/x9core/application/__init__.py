@@ -1,1 +1,1 @@
-# Application layer — use cases and ports (interfaces).
+"""Camada de aplicação — casos de uso e ports."""
