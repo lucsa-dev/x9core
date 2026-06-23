@@ -1,0 +1,53 @@
+---
+description: Mudanças pequenas, incrementais e com confirmação antes de agir
+alwaysApply: true
+---
+
+# Workflow incremental
+
+## Antes de agir
+
+1. **Esclareça o escopo** — se a tarefa for ampla ou ambígua, resuma o plano em 3–5 bullets e **pergunte** antes de implementar.
+2. **Uma coisa por vez** — prefira entregar um step completo (ex.: um use case, uma rota) em vez de vários steps de uma vez.
+3. **Confirme mudanças grandes** — peça ok explícito antes de:
+   - refatorar arquivos não pedidos
+   - adicionar dependências
+   - alterar arquitetura ou convenções
+   - tocar em mais de **5 arquivos** na mesma resposta
+
+## Tamanho do diff
+
+- **Ideal:** 1–3 arquivos por turno de implementação.
+- **Máximo sem avisar:** 5 arquivos (código + teste do mesmo step).
+- Se precisar de mais, **liste os arquivos** e pergunte: *"Posso aplicar tudo de uma vez ou prefere step a step?"*
+
+## Quando perguntar (não assumir)
+
+- Requisito incompleto ou com múltiplas interpretações
+- Trade-off de design (sync vs async, biblioteca A vs B)
+- Escopo além do pedido (README, CI, refatoração "de brinde")
+- Correções em massa não solicitadas
+
+## Quando pode agir sem perguntar
+
+- Bug óbvio no arquivo que o usuário citou
+- Teste + implementação mínima do step **já acordado**
+- Ajuste pedido explicitamente ("corrija", "implemente Step 3")
+
+## Formato da proposta
+
+Antes de edits grandes, use:
+
+```text
+Plano:
+1. ...
+2. ...
+
+Arquivos afetados: ~N
+Posso seguir?
+```
+
+## Alinhamento com o projeto
+
+- Seguir `ROADMAP.md` step a step (TDD: teste → código → refactor).
+- Não pular steps nem implementar features de fases futuras sem o usuário pedir.

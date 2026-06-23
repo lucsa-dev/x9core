@@ -25,8 +25,8 @@ API de monitoramento com **scraping direto** — sem APIs externas pagas (SerpAP
 | Step | Entrega | Rede na CI? |
 |------|---------|-------------|
 | **1** | `Dork`, `Clock`, `DorkBuilder` | Não ✅ |
-| **2** | `SearchHit`, parser HTML, `SearchProvider`, `SearchByDork`, fake | Não |
-| **3** | `POST /v1/search/dork` | Não (fake) |
+| **2** | `SearchHit`, parser HTML, `SearchProvider`, `SearchByDork`, fake | Não ✅ |
+| **3** | `POST /v1/search/dork` | Não (fake via override) ✅ |
 | **4** | `PlaywrightGoogleScraper` — navega `google.com/search` | Manual/optional |
 | **4b** | Rate limit, user-agent, proxy, retry | — |
 | **4c** | Gravar HTML fixtures quando layout Google mudar | — |

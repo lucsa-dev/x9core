@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from x9core import __version__
+from x9core.api.routes.search import router as search_router
 from x9core.infrastructure.config import Settings, get_settings
 
 
@@ -31,6 +32,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         version=__version__,
         lifespan=lifespan,
     )
+
+    app.include_router(search_router)
 
     @app.get("/health")
     async def health() -> dict[str, str]:

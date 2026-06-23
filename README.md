@@ -75,4 +75,5 @@ src/x9core/
 
 - **Docstrings obrigatórias** em classes, funções e métodos em `src/` (validado pelo Ruff)
 - Regra detalhada em `.cursor/rules/docstrings.mdc`
+- **Mudanças incrementais** — ver `.cursor/rules/workflow-incremental.mdc`
 - Testes offline com HTML fixtures em `tests/fixtures/`
